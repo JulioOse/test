@@ -1,0 +1,155 @@
+<html>
+
+	<head>
+
+		<!-- Include meta tag to ensure proper rendering and touch zooming -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Include jQuery Mobile stylesheets -->
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+		<!-- Include the jQuery library -->
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+		<!-- Include the jQuery Mobile library -->
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		
+		<script src="cordova.js"></script>
+	</head>
+	
+	<body>
+	
+		<script>
+		
+			function createLink(urls,input){
+					for (item in urls) {
+						var url = urls[item][1] + $(input).val();
+						$(urls[item][0]).attr("href", url)
+					}
+				}
+			$(document).on("pagecreate", "#biblepage", function() { 
+			
+				var bibleurls = {
+								bibleGateway: [ "#biblegateway", "https://www.biblegateway.com/quicksearch/?quicksearch="],
+								bibleHub: ["#biblehub", "http://biblehub.net/search.php?q="],
+								bibleStudyTools: ["#biblestudytools", "http://www.biblestudytools.com/search/?s=Bibles&q="]
+					
+					};
+					
+
+				$("#word").on("keyup", function() {
+					//var url = $(".item").attr("href") + $("#word").val();
+					createLink(bibleurls, "#word")
+				})
+				
+				if($("#word").val() !== "") {
+					createLink(bibleurls, "#word")
+				}
+			})
+			
+			
+			
+			
+			$(document).on("pagecreate", "#techpage", function() { 
+			
+				var techurls = {
+								techcrunch: [ "#techcrunch", "https://techcrunch.com/search/"],
+								zdnet: ["#zdnet", "http://www.zdnet.com/search/?q="],
+								cnet: ["#cnet", "https://www.cnet.com/search/?query="]
+					
+					};
+					
+
+				$("#wordtech").on("keyup", function() {
+					createLink(techurls, "#wordtech")
+				})
+				
+				if($("#wordtech").val() !== "") {
+					createLink(techurls, "#wordtech")
+				}
+			})
+			
+		
+		</script>
+		
+		<!--- home page --->
+		<div data-role="page" id="homepage" >
+			<div data-role="panel" id="mypanel">
+				<a href="#homepage" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>
+				<h2>About the app</h2>
+				<p>This app is designed to help you find and gather search results from various sources quickly. The sources that are used in the app are picked because of there credibility. Meaning that you don't have to comb through various search results on regular search engines to find credible ones.</p>
+				<h2>How this app works</h2>
+				<ol>
+					<li>First you select a category from the home page</li>
+					<li>You then type the keyword that you are searching for in the search bar that is located on the top of the page</li>
+					<li>Finally you click on one of the links below the search bar to take you to a page with the search word already entered</li>
+				</ol>
+			</div> 
+			<div data-role="header">
+				<h1> QS Engine</h1>
+				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-notext"></a> 
+			</div>
+			<div data-role="main" class="ui-content">
+				<ul data-role="listview">
+					<li><a href="#biblepage"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTYauFPkPrT3Q07s0cXzT7GhL7kcL2VgXOhCHZKxLIqerzNCMd9aA" alt="bible" >Bible</a></li>
+				<li><a href="#techpage"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC_LuRkm_EECI0LyQHB0kx4hWBnQEvR_JEZkKRYDstFsgL-BPa_sKG4kjd" alt="Tech" >Tech</a></li>
+				</ul>
+		
+			</div>
+		</div>
+		
+		<!--- end of home page  --->
+		
+
+		<!--- bible page --->
+		<div data-role="page" id="biblepage" >
+			<div data-role="header">
+				<a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext"></a>
+				<h1> QS Engine: Bible</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<input id="word" type="text" placeholder="enter keyword"> <!-- <button id="btn" class="ui-btn"> Search</button> -->
+				<br>
+				<ul data-role="listview">
+					<li><a href="https://www.biblegateway.com/quicksearch/?quicksearch=" class="item" id="biblegateway">Bible Gateway</a></li>
+					<li><a href="http://biblehub.net/search.php?q=" class="item" id="biblehub">Bible Hub</a></li>
+					<li><a href="http://www.biblestudytools.com/search/?s=Bibles&q=" class="item" id="biblestudytools">Bible Study Tools</a></li>
+				</ul>
+			
+			</div>
+		</div>
+		
+		<!--- end of bible page  --->
+		
+		
+		<!--- tech page --->
+		<div data-role="page" id="techpage" >
+			<div data-role="header">
+				<a href="#homepage" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-notext"></a>
+				<h1> QS Engine: Tech</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<input id="wordtech" type="text" placeholder="enter keyword"> <!-- <button id="btn" class="ui-btn"> Search</button> -->
+				<br>
+				<ul data-role="listview">
+					<li><a href="https://techcrunch.com/search/" class="item" id="techcrunch">Tech Crunch</a></li>
+					<li><a href="http://www.zdnet.com/search/?q=" class="item" id="zdnet">Zdnet</a></li>
+					<li><a href="https://www.cnet.com/search/?query=" class="item" id="cnet">Cnet</a></li>
+			
+		
+			
+				</ul>
+			
+			</div>
+		</div>
+		
+		<!--- end of tech page  --->
+						
+	</body>
+
+
+
+
+
+
+</html>
