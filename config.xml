@@ -1,0 +1,24 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.jcowebdevelopmment.tesengienapp"
+        versionCode = "1"
+        version     = "1.0.0" >
+
+    <name>test engine</name>
+
+    <description>
+        test engine
+    </description>
+
+    <author href="http://jcowebdevelopment.com" email="julio@jcowebdevelopment.com">
+        Julio Oseguera 
+    </author>
+
+<plugin name="cordova-plugin-whitelist" />
+<access origin="*" />
+<allow-intent href="*" />
+<allow-navigation href="*" />
+  <icon src="icon.png" />
+</widget>
